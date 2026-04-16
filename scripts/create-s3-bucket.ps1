@@ -119,6 +119,8 @@ Write-Host "Uploading site..."
 aws s3 sync $SiteRoot "s3://$BucketName/" `
   --delete `
   --exclude ".git/*" `
+  --exclude ".gitignore" `
+  --exclude "_website-redirect.json" `
   --exclude ".cursor/*" `
   --exclude "scripts/*" `
   --exclude "user/*" `
