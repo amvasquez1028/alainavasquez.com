@@ -57,7 +57,6 @@ Parameters:
 
 Conditions:
   LegacyPublicReadEnabled: !Equals [!Ref EnableLegacyPublicRead, "true"]
-  LegacyPublicReadDisabled: !Equals [!Ref EnableLegacyPublicRead, "false"]
   WwwHostnameEnabled: !Equals [!Ref IncludeWwwHostname, "true"]
 
 Resources:
@@ -150,17 +149,6 @@ Resources:
                 Condition:
                   StringEquals:
                     "AWS:SourceArn": !Sub "arn:aws:cloudfront::${AWS::AccountId}:distribution/${SiteDistribution}"
-
-  SiteBucketPublicAccessBlock:
-    Type: AWS::S3::BucketPublicAccessBlock
-    Condition: LegacyPublicReadDisabled
-    DependsOn: SiteBucketPolicy
-    Properties:
-      Bucket: !Ref SiteBucketName
-      BlockPublicAcls: true
-      IgnorePublicAcls: true
-      BlockPublicPolicy: true
-      RestrictPublicBuckets: true
 
   SiteDistribution:
     Type: AWS::CloudFront::Distribution

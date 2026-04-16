@@ -67,6 +67,13 @@ aws cloudformation deploy `
 
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
+if ($EnableLegacyPublicRead -eq "false") {
+  Write-Host ""
+  Write-Host "Applying S3 public access block (OAC-only bucket)..."
+  & (Join-Path $PSScriptRoot "lock-s3-public-access-block.ps1") -BucketName $SiteBucketName -Region $Region
+  if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+}
+
 Write-Host ""
 Write-Host "Outputs:"
 aws cloudformation describe-stacks --stack-name $StackName --region $Region `

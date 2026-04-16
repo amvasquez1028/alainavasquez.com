@@ -36,13 +36,15 @@ $websiteJson = @"
 
 Push-Location $PSScriptRoot
 try {
-  [System.IO.File]::WriteAllText("_website-redirect.json", $websiteJson.Trim(), $utf8NoBom)
+  $websiteFile = Join-Path $PSScriptRoot "_website-redirect.json"
+  [System.IO.File]::WriteAllText($websiteFile, $websiteJson.Trim(), $utf8NoBom)
+  $websiteUri = "file://" + ($websiteFile -replace "\\", "/")
   aws s3api put-bucket-website `
     --bucket $BucketName `
-    --website-configuration file://_website-redirect.json `
+    --website-configuration $websiteUri `
     --region $Region
   if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-  Remove-Item "_website-redirect.json" -Force -ErrorAction SilentlyContinue
+  Remove-Item $websiteFile -Force -ErrorAction SilentlyContinue
 } finally {
   Pop-Location
 }
