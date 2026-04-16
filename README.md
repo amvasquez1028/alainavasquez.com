@@ -9,8 +9,8 @@ Public portfolio for **https://alainavasquez.com/** (HTML + CSS on S3 + CloudFro
 
 ## Deploy (summary)
 
-1. Configure AWS CLI (`us-east-1`).
-2. `.\scripts\deploy-cloudfront.ps1` — ACM, CloudFront, bucket policy (OAC), response headers (CSP + HSTS short phase).
+1. Configure AWS CLI in **`%USERPROFILE%\.aws`** (e.g. `credentials` + `config` with profile **`AdminUser`**). In PowerShell: `$env:AWS_PROFILE = "AdminUser"`; region **`us-east-1`**.
+2. `.\scripts\deploy-cloudfront.ps1` — ACM, CloudFront, bucket policy (OAC), response headers (CSP + HSTS short phase), then locks S3 public access block when legacy public read is off.
 3. `.\scripts\configure-s3-website-redirect.ps1` — S3 website URL redirects to `https://alainavasquez.com/`.
 4. `.\scripts\create-s3-bucket.ps1 -SkipWebsiteHosting -SkipBucketPolicyAndPublicAccess` — upload site files without overwriting stack policy.
 
