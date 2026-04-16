@@ -5,7 +5,8 @@
 # the legacy S3 website URL redirects to https://alainavasquez.com/
 #
 # Requirements:
-# - AWS CLI configured (e.g. $env:AWS_PROFILE = "AdminUser")
+# - AWS CLI configured under %USERPROFILE%\.aws (e.g. profile AdminUser in credentials + config)
+#   PowerShell: $env:AWS_PROFILE = "AdminUser"; $env:AWS_SDK_LOAD_CONFIG = "1"
 # - Public Route 53 hosted zone for the domain IN THIS ACCOUNT (same as CLI identity)
 # - S3 bucket exists with site objects (see create-s3-bucket.ps1)
 #
