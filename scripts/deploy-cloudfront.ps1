@@ -14,7 +14,7 @@
 #   .\deploy-cloudfront.ps1 -HostedZoneId Z...   # override zone if needed
 #
 # Optional:
-#   .\deploy-cloudfront.ps1 -EnableLegacyPublicRead false
+#   .\deploy-cloudfront.ps1 -EnableLegacyPublicRead true   # legacy public S3 read (not recommended)
 
 param(
   [Parameter(HelpMessage = "Route 53 hosted zone ID for alainavasquez.com")]

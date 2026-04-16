@@ -23,3 +23,19 @@ CloudFront sends **HSTS** with `max-age=300` (5 minutes) and `includeSubDomains`
 ## CSP note
 
 If you add third-party scripts, fonts, or inline styles, update **ContentSecurityPolicy** on `SiteSecurityHeadersPolicy` in `infrastructure/cloudfront-acm.yaml` to match.
+
+## Push to GitHub (public repo)
+
+This repo is initialized with `main` and **no secrets** in history. To publish:
+
+1. On GitHub: **New repository** → name (e.g. `alainavasquez.com` or `alainavasquez-com-site`) → **Public** → create **without** README (this repo already has one).
+2. Locally (replace `YOUR_USER` and `REPO`):
+
+```bash
+git remote add origin https://github.com/YOUR_USER/REPO.git
+git push -u origin main
+```
+
+Or install [GitHub CLI](https://cli.github.com/) and run: `gh repo create REPO --public --source=. --remote=origin --push`
+
+Before pushing, optionally set your preferred author: `git config user.email "you@users.noreply.github.com"` (repo-local is already set for commits in this clone).
