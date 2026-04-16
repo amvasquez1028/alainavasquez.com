@@ -1,0 +1,25 @@
+# Secrets and local credentials (use `aws configure` or IAM roles — never commit keys)
+user/credentials/*
+!user/credentials/.gitkeep
+*.pem
+*.p12
+.env
+.env.*
+!.env.example
+
+# Editor / tooling
+.cursor/
+mcps/
+terminals/
+
+# AWS CLI temp files (create-s3-bucket.ps1)
+**/_sse-run.json
+**/_policy-run.json
+**/_website-redirect.json
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Logs
+*.log
