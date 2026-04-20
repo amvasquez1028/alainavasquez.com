@@ -26,17 +26,17 @@ If you add third-party scripts, fonts, or inline styles, update **ContentSecurit
 
 ## Push to GitHub (public repo)
 
-This repo uses branch **`main`** and **no secrets** in history. Author email is set to **`alainavasquez1028@gmail.com`** for this clone.
+This repo uses branch **`main`** and **no secrets** in history.
 
-1. Sign in as **[amvasquez1028](https://github.com/amvasquez1028)** on GitHub.
-2. **[Create a new public repository](https://github.com/new)** named **`alainavasquez.com`** (exact name matches the configured remote), **without** adding a README, `.gitignore`, or license (this repo already has them).
+1. Sign in on GitHub.
+2. **[Create a new public repository](https://github.com/new)** (exact name matches the configured remote).
 3. Push:
 
 ```bash
-git remote add origin https://github.com/amvasquez1028/alainavasquez.com.git   # if not already set
+git remote add origin https://github.com/user/user.com.git   # if not already set
 git push -u origin main
 ```
 
-If you prefer a different repo name, run `git remote set-url origin https://github.com/amvasquez1028/YOUR_REPO_NAME.git` then push.
+If you prefer a different repo name, run `git remote set-url origin https://github.com/user/YOUR_REPO_NAME.git` then push.
 
 Or install [GitHub CLI](https://cli.github.com/) and run: `gh repo create alainavasquez.com --public --source=. --remote=origin --push`
